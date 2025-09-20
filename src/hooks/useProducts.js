@@ -36,6 +36,11 @@ const useProducts = () => {
           throw new Error('Invalid response format from server');
         }
         
+        // Validate products array
+        if (!Array.isArray(result.products)) {
+          throw new Error('Products data is not in expected format');
+        }
+        
         setProducts(result.products || []);
       } catch (err) {
         // Handle errors
